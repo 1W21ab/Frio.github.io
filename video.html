@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="css/#style.css">
+  <script src="it js/vid.js"></script>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="urvid">
+    <source src="video/vid.mp4" type="video/mp4">
+  </video>
+
+  <div class="title-content">
+          <h1 class="title">My Gallery</h1>
+  </div>
+ 
+
+ 
+
+  <!-- Marquee Slideshow -->
+  <div class="content">
+    <marquee id="myMarquee" behavior="scroll" direction="left" scrollamount="5">
+      <img src="img/1.jpg" height="200">
+      <img src="img/2.jpg" height="200">
+      <img src="img/3.jpeg" height="200">
+      <img src="img/2.jpg" height="200">
+      <img src="img/4.jpeg" height="200">
+      <img src="img/2.jpg" height="200">
+      <img src="img/5.jpg" height="200">
+      <img src="img/2.jpg" height="200">
+      <img src="img/6.jpg" height="200">
+      <img src="img/2.jpg" height="200">
+      <img src="img/6.jpg" height="200">
+    </marquee>
+  </div>
+
+ <div class="button-container">
+  <button id="pause_button" onclick="myFunction()">Pause</button>
+</div>
+
+</body>
+</html>
