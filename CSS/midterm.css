@@ -1,0 +1,72 @@
+.navbar-custom {
+    background: linear-gradient(90deg, #b23c5a 0%, #f7cac9 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 0.7rem 1.5rem;
+    border-radius: 0 0 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s;
+}
+
+.navbar-custom .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    transition: color 0.2s;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: #ffe5ec;
+    text-shadow: 0 2px 8px #fff3;
+}
+
+.navbar-custom .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0 0.7rem;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.navbar-custom .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: width 0.3s;
+    margin: 0 auto;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: #b23c5a;
+    background: #fff3;
+    border-radius: 8px;
+}
+
+.navbar-custom .nav-link:hover::after,
+.navbar-custom .nav-link.active::after {
+    width: 80%;
+}
+
+.navbar-custom .nav-item {
+    transition: transform 0.2s;
+}
+
+.navbar-custom .nav-item:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .navbar-custom {
+        padding: 0.7rem 0.5rem;
+    }
+    .navbar-custom .nav-link {
+        margin: 0 0.2rem;
+        font-size: 1rem;
+    }
+}

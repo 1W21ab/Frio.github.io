@@ -1,0 +1,118 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+
+const app = express();
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+// --------------------------
+//   IN-MEMORY DATA
+// --------------------------
+let PRODUCTS = [
+  {
+    id: 1,
+    title: "Blue T-Shirt",
+    description: "Comfortable cotton t-shirt",
+    price: 19.99,
+    stock: 20,
+    image: "images/tshirt-blue.png"
+  },
+  {
+    id: 2,
+    title: "Sneakers",
+    description: "Stylish running shoes",
+    price: 59.99,
+    stock: 10,
+    image: "images/sneakers.png"
+  },
+  {
+    id: 3,
+    title: "Coffee Mug",
+    description: "Ceramic mug 350ml",
+    price: 9.5,
+    stock: 40,
+    image: "images/mug.png"
+  },
+];
+
+let ORDERS = [];
+let NEXT_PRODUCT_ID = 4;
+
+// --------------------------
+//      API ENDPOINTS
+// --------------------------
+
+app.get("/api/products", (req, res) => {
+  res.json(PRODUCTS);
+});
+
+app.get("/api/products/:id", (req, res) => {
+  const product = PRODUCTS.find(p => p.id == req.params.id);
+  if (!product) return res.status(404).json({ error: "Not found" });
+  res.json(product);
+});
+
+// Add product (admin)
+app.post("/api/admin/products", (req, res) => {
+  const { title, description, price, stock = 0, image = "" } = req.body;
+  if (!title || price == null) return res.status(400).json({ error: "title and price required" });
+
+  const newProduct = {
+    id: NEXT_PRODUCT_ID++,
+    title,
+    description,
+    price,
+    stock,
+    image
+  };
+
+  PRODUCTS.push(newProduct);
+  res.json({ success: true, product: newProduct });
+});
+
+// Mock checkout
+app.post("/api/checkout", (req, res) => {
+  const { cart = [] } = req.body;
+
+  if (cart.length === 0) {
+    return res.status(400).json({ error: "Cart is empty" });
+  }
+
+  let total = 0;
+
+  // validate stock + calculate total
+  for (let item of cart) {
+    const p = PRODUCTS.find(pr => pr.id === item.id);
+    if (!p) return res.status(404).json({ error: `Product ${item.id} not found` });
+    if (p.stock < item.qty) return res.status(400).json({ error: `${p.title} out of stock` });
+
+    total += p.price * item.qty;
+  }
+
+  // reduce stock
+  for (let item of cart) {
+    const p = PRODUCTS.find(pr => pr.id === item.id);
+    p.stock -= item.qty;
+  }
+
+  // store order
+  const order = {
+    id: ORDERS.length + 1,
+    cart,
+    total,
+    created_at: new Date().toISOString()
+  };
+  ORDERS.push(order);
+
+  res.json({ success: true, order });
+});
+
+// Fallback to frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// --------------------------
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Running at http://localhost:${PORT}`));

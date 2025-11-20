@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - My Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="CSS/midterm.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-effect { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="bg-slate-950 text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-effect border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2">Home</a>
+                    <a href="portfolio.html" class="text-gray-300 hover:text-white px-3 py-2">Portfolio</a>
+                    <a href="video.html" class="text-gray-300 hover:text-white px-3 py-2">Gallery</a>
+                    <a href="about.html" class="text-white px-3 py-2">About</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white px-3 py-2">Contact</a>
+                <button id="mobile-menu-button" class="md:hidden text-gray-300"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden glass-effect">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800">Home</a>
+                <a href="portfolio.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800">Portfolio</a>
+                <a href="video.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800">Gallery</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md text-white bg-gray-800">About</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">About <span class="gradient-text">Me</span></h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Learn more about my journey, passions, and what drives me to create</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main About -->
+    <section class="pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div>
+                    <img src="img/13.jpg" alt="About Me" class="rounded-3xl w-full">
+                </div>
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-bold">Hi, I'm <span class="gradient-text">Ana Marie Frio</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        I'm a passionate Computer Science student pursuing my Bachelor's degree in Information Technology, currently in my 4th year. My journey into technology began with curiosity and has evolved into creating innovative solutions.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        As an aspiring Software Engineer and Web Developer, I thrive on challenges that push me to learn and grow. I believe in writing clean, efficient code and creating user experiences that are both beautiful and functional.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-6">
+                        <div class="glass-effect p-4 rounded-xl">
+                            <div class="text-sm text-gray-400 mb-1">Location</div>
+                            <div class="font-semibold flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>Patucannay Bangued Abra</div>
+                        </div>
+                        <div class="glass-effect p-4 rounded-xl">
+                            <div class="text-sm text-gray-400 mb-1">Experience</div>
+                            <div class="font-semibold flex items-center"><i class="fas fa-briefcase text-purple-500 mr-2"></i>2+ Years</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Education</span></h2>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="glass-effect rounded-2xl p-8">
+                    <div class="flex items-start space-x-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-2">Bachelor of Science in Information Technology</h3>
+                                    <p class="text-blue-400 font-semibold">DCCP</p>
+                                </div>
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm font-semibold text-blue-400">2025-2026</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Specializing in Software Engineering and Web Development. Relevant coursework includes Data Structures, Algorithms, Database Management, and Web Technologies.</p>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-gray-400"><i class="fas fa-check-circle text-green-500 mr-3"></i>Dean's Lister</div>
+                                <div class="flex items-center text-gray-400"><i class="fas fa-check-circle text-green-500 mr-3"></i>Active member of CS Society</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Work <span class="gradient-text">Experience</span></h2>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-12">
+                <div class="relative">
+                    <div class="absolute left-8 top-0 w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center z-10">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <div class="ml-28 glass-effect rounded-2xl p-8">
+                        <div class="flex justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Full Stack Developer Intern</h3>
+                                <p class="text-blue-400 font-semibold">Tech Company Inc.</p>
+                            </div>
+                            <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm font-semibold text-blue-400">2025 - Present</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Developing and maintaining web applications using Laravel and React. Collaborating with senior developers on various client projects.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800/50 border border-gray-700 rounded-full text-xs">Laravel</span>
+                            <span class="px-3 py-1 bg-gray-800/50 border border-gray-700 rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-gray-800/50 border border-gray-700 rounded-full text-xs">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-gray-800 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Get In Touch</h3>
+                    <div class="space-y-3 text-gray-400">
+                        <p><i class="fas fa-envelope mr-3 text-blue-500"></i><a href="mailto:your.email@example.com">frioanamarie13@gmail.com</a></p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Quick Links</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <a href="index.html" class="block hover:text-white"><i class="fas fa-chevron-right mr-2 text-sm"></i>Home</a>
+                        <a href="portfolio.html" class="block hover:text-white"><i class="fas fa-chevron-right mr-2 text-sm"></i>Portfolio</a>
+                        <a href="about.html" class="block hover:text-white"><i class="fas fa-chevron-right mr-2 text-sm"></i>About</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Connect</h3>
+                    <div class="flex space-x-4">
+                         <a href="https://github.com/1W21ab" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/anamariefrio" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/anamarie.frio.9" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+               <p>&copy; <span id="year"></span> Portfolio. All rights reserved. | Made with ❤️ by <span class="gradient-text">Ana Marie</span></p>
+        </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

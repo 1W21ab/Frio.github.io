@@ -1,45 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>Gallery</title>
-  <link rel="stylesheet" href="css/#style.css">
-  <script src="it js/vid.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - My Photos & Videos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="CSS/midterm.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-effect { background: rgba(255, 255, 255, .05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, .1); }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); transition: width .3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    </style>
 </head>
-<body>
 
-  <!-- Background Video -->
-  <video autoplay muted loop id="urvid">
-    <source src="video/vid.mp4" type="video/mp4">
-  </video>
+<body class="bg-slate-950 text-gray-100">
 
-  <div class="title-content">
-          <h1 class="title">My Gallery</h1>
-  </div>
- 
+<!-- NAVIGATION -->
+<nav class="fixed w-full top-0 z-50 glass-effect border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
 
- 
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link relative px-3 py-2 text-gray-300 hover:text-white">Home</a>
+                <a href="portfolio.html" class="nav-link relative px-3 py-2 text-gray-300 hover:text-white">Portfolio</a>
+                <a href="video.html" class="nav-link relative px-3 py-2 text-white active">Gallery</a>
+                <a href="about.html" class="nav-link relative px-3 py-2 text-gray-300 hover:text-white">About</a>
+                <a href="contact.html" class="nav-link relative px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+            </div>
 
-  <!-- Marquee Slideshow -->
-  <div class="content">
-    <marquee id="myMarquee" behavior="scroll" direction="left" scrollamount="5">
-      <img src="img/1.jpg" height="200">
-      <img src="img/2.jpg" height="200">
-      <img src="img/3.jpeg" height="200">
-      <img src="img/2.jpg" height="200">
-      <img src="img/4.jpeg" height="200">
-      <img src="img/2.jpg" height="200">
-      <img src="img/5.jpg" height="200">
-      <img src="img/2.jpg" height="200">
-      <img src="img/6.jpg" height="200">
-      <img src="img/2.jpg" height="200">
-      <img src="img/6.jpg" height="200">
-    </marquee>
-  </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </div>
 
- <div class="button-container">
-  <button id="pause_button" onclick="myFunction()">Pause</button>
-</div>
+    <div id="mobile-menu" class="hidden md:hidden glass-effect">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md hover:bg-gray-800">Home</a>
+            <a href="portfolio.html" class="block px-3 py-2 rounded-md hover:bg-gray-800">Portfolio</a>
+            <a href="video.html" class="block px-3 py-2 rounded-md bg-gray-800 text-white">Gallery</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md hover:bg-gray-800">About</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md hover:bg-gray-800">Contact</a>
+        </div>
+    </div>
+</nav>
+<!-- HERO SECTION -->
+<section class="relative w-full h-screen overflow-hidden">
 
-</body>
-</html>
+    <!-- VIDEO BACKGROUND -->
+    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+        <source src="video/vid.mp4" type="video/mp4">
+    </video>
+
+    <!-- CENTERED IMAGE SLIDESHOW -->
+    <div class="absolute inset-0 flex items-center justify-center z-10">
+        <img id="slideshow-img"
+             class="max-w-[200px] w-auto h-auto opacity-80 transition-opacity duration-1000 rounded-lg shadow-2xl"
+             src="img/1.jpg">
+
+              <!-- Slideshow control (pause/play) -->
+        <button id="slideshow-toggle" aria-pressed="false"
+                class="absolute top-6 right-6 z-20 w-12 h-12 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/60">
+            <i id="slideshow-toggle-icon" class="fas fa-pause"></i>
+        </button>
+    </div>
+
+    <!-- TEXT OVERLAY ABOVE EVERYTHING -->
+    <div class="relative z-20 flex items-center justify-center h-full pointer-events-none">
+        <h1 class="text-6xl md:text-7xl font-bold text-white drop-shadow-2xl absolute top-10">
+            My <span class="text-blue-400">Gallery</span>
+        </h1>
+    </div>
+
+</section>
+
+<script>
+    const slideshowImages = [
+        "img/1.jpg",
+        "img/2.jpg",
+        "img/5.jpg",
+        "img/6.jpg",
+        "img/8.jpg",
+        "img/11.jpg",
+        "img/12.jpg",
+        "img/13.jpg",
+        "img/15.jpg"
+
+    ];
+
+   let index = 0;
+    const slideshow = document.getElementById("slideshow-img");
+
+    // interval handle for start/stop
+    let slideshowIntervalId = null;
+    const INTERVAL_MS = 4000;
+    const FADE_MS = 1000; // must match CSS transition duration
+
+    // preload images
+    slideshowImages.forEach(src => { const i = new Image(); i.src = src; });
+
+    function nextSlide() {
+        if (!slideshow) return;
+        slideshow.style.opacity = "0";
+        setTimeout(() => {
+            index = (index + 1) % slideshowImages.length;
+            slideshow.src = slideshowImages[index];
+            slideshow.style.opacity = "0.8";
+        }, FADE_MS);
+    }
+
+    function startSlideshow() {
+        if (slideshowIntervalId === null) {
+            slideshowIntervalId = setInterval(nextSlide, INTERVAL_MS);
+            updateToggleButton(true);
+        }
+    }
+
+    function stopSlideshow() {
+        if (slideshowIntervalId !== null) {
+            clearInterval(slideshowIntervalId);
+            slideshowIntervalId = null;
+            updateToggleButton(false);
+        }
+    }
+
+    function toggleSlideshow() {
+        if (slideshowIntervalId === null) {
+            startSlideshow();
+        } else {
+            stopSlideshow();
+        }
+    }
+
+    function updateToggleButton(running) {
+        const btn = document.getElementById('slideshow-toggle');
+        const icon = document.getElementById('slideshow-toggle-icon');
+        if (!btn || !icon) return;
+        if (running) {
+            btn.setAttribute('aria-pressed', 'false');
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+            btn.title = "Pause slideshow";
+        } else {
+            btn.setAttribute('aria-pressed', 'true');
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play');
+            btn.title = "Play slideshow";
+        }
+    }
+
+    // wire control button
+    const toggleBtn = document.getElementById('slideshow-toggle');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleSlideshow();
+        });
+    }
+
+    // start automatically
+    startSlideshow();
+</script>
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-gray-300 py-10 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <div>
+                <h2 class="text-xl font-bold text-white mb-3">About</h2>
+                <p class="text-gray-400">Thanks for visiting my gallery website!</p>
+            </div>
+
+            <div>
+                <h2 class="text-xl font-bold text-white mb-3">Links</h2>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="video.html" class="hover:text-white">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-xl font-bold text-white mb-3">Contact</h2>
+                <p>Email: frioanamarie13@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="text-center text-gray-500 mt-10">
+           <p>&copy; <span id="year"></span> Portfolio. All rights reserved. | Made with ❤️ by <span class="gradient-text">Ana Marie</span></p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+

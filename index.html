@@ -1,26 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <title>Gallery - My Photos & Videos</title>
+
+    <!-- Tailwind + Bootstrap -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="CSS/midterm.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="CSS/midterm.css">
+
     <style>
-          body{ 
-            background-image: url('img/6.jpg');
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-          }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            transition: width .3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
     </style>
 </head>
-<body>
-    
-    <hr>
-    MY LINKS
-    <hr>
-    
-    <a href="resume.html">My Resume</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="video.html">Video</a>
+<body class="bg-slate-950 text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-effect border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">Portfolio</a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-white px-3 py-2">Home</a>
+                    <a href="portfolio.html" class="nav-link text-gray-300 hover:text-white px-3 py-2">Portfolio</a>
+                    <a href="video.html" class="nav-link active text-white px-3 py-2">Gallery</a>
+                    <a href="about.html" class="nav-link text-gray-300 hover:text-white px-3 py-2">About</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-white px-3 py-2">Contact</a>
+                </div>
+
+                <!-- Mobile toggle -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-300">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-slate-900 border-t border-gray-800">
+            <div class="px-4 py-4 space-y-2">
+                <a href="index.html" class="block text-gray-300">Home</a>
+                <a href="portfolio.html" class="block text-gray-300">Portfolio</a>
+                <a href="video.html" class="block text-white">Gallery</a>
+                <a href="about.html" class="block text-gray-300">About</a>
+                <a href="contact.html" class="block text-gray-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl top-20 left-1/4"></div>
+            <div class="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl bottom-20 right-1/4"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Left Content -->
+                <div class="text-center lg:text-left">
+                    <span class="inline-block mb-4 px-4 py-2 glass-effect rounded-full text-sm font-semibold">
+                        <span class="text-green-400">●</span> Available for work
+                    </span>
+
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        Hi, I'm <span class="gradient-text">Ana Marie</span>
+                    </h1>
+
+                    <h2 class="text-2xl md:text-3xl text-gray-400 mb-6">
+                        <span class="text-white font-semibold">Software Engineer</span> & Web Developer
+                    </h2>
+
+                    <p class="text-lg text-gray-400 mb-8 max-w-2xl">
+                        4th Year BS Information Technology student passionate about creating innovative web solutions.
+                        Specializing in full-stack development with Laravel and React.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="portfolio.html" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-all flex items-center gap-2">
+                            View My Work <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="contact.html" class="px-8 py-4 glass-effect rounded-full font-semibold hover:bg-gray-800/50 hover:scale-105 transition-all flex items-center gap-2">
+                            Get In Touch <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="flex gap-4 mt-8 justify-center lg:justify-start">
+                        <a href="https://github.com/1W21ab" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/anamariefrio" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/anamarie.frio.9" target="_blank" class="w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:scale-110 transition-all">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="relative">
+                    <img src="img/11.jpg" alt="Profile" class="rounded-3xl w-full max-w-md mx-auto glass-effect p-2 relative z-10">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-3xl blur-2xl"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+     <!-- Skills Section -->
+    <section class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                <p class="text-gray-400 text-lg">Technologies and tools I work with</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-4"></i>
+                    <p class="font-semibold">HTML5</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-4"></i>
+                    <p class="font-semibold">CSS3</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-js text-5xl text-yellow-400 mb-4"></i>
+                    <p class="font-semibold">JavaScript</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-react text-5xl text-cyan-400 mb-4"></i>
+                    <p class="font-semibold">React</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-laravel text-5xl text-red-500 mb-4"></i>
+                    <p class="font-semibold">Laravel</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-php text-5xl text-indigo-400 mb-4"></i>
+                    <p class="font-semibold">PHP</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-node-js text-5xl text-green-500 mb-4"></i>
+                    <p class="font-semibold">Node.js</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fas fa-database text-5xl text-blue-600 mb-4"></i>
+                    <p class="font-semibold">MySQL</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-git-alt text-5xl text-orange-600 mb-4"></i>
+                    <p class="font-semibold">Git</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-github text-5xl mb-4"></i>
+                    <p class="font-semibold">GitHub</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fab fa-bootstrap text-5xl text-purple-500 mb-4"></i>
+                    <p class="font-semibold">Bootstrap</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center hover:scale-105 transition-all hover:bg-gray-800/50">
+                    <i class="fas fa-wind text-5xl text-cyan-400 mb-4"></i>
+                    <p class="font-semibold">Tailwind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-gray-400 text-lg">Some of my recent work</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-all group">
+                    <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" alt="Project">
+                    </div>
+                    <div class="p-6">
+                      <div class="project-card glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-all group" data-category="web">
+  <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" 
+         class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" 
+         alt="E-Commerce Platform">
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+      <a href="https://your-live-demo-link.vercel.app" target="_blank" 
+         class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+        <i class="fas fa-external-link-alt text-2xl"></i>
+      </a>
+    </div>
+  </div>
+ <div class="p-6">
+  <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+  <p class="text-gray-400 mb-4">Full-stack e-commerce solution with Laravel and React</p>
+
+  <!-- CLICKABLE IMAGE ONLY -->
+  <a href="e-commerce.html">
+    <img src="your-image.jpg" 
+         alt="E-commerce preview" 
+         class="w-full h-48 object-cover rounded-lg mb-4 cursor-pointer hover:opacity-80 transition">
+  </a>
+  <!-- END CLICKABLE IMAGE -->
+
+  <div class="flex flex-wrap gap-2 mb-4">
+    <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs">Laravel</span>
+    <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs">React</span>
+    <span class="px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-xs">MySQL</span>
+  </div>
+
+  <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+    <!-- Live Demo -->
+    <a href="https://your-live-demo-link.vercel.app" target="_blank" 
+       class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+      <i class="fas fa-link"></i> Live Demo
+    </a>
+    <!-- Code -->
+    <a href="https://github.com/your-github-repo" target="_blank" 
+       class="text-gray-400 hover:text-white flex items-center gap-2">
+      <i class="fab fa-github"></i> Code
+    </a>
+  </div>
+</div>
+
+    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+      <!-- Live Demo -->
+      <a href="https://your-live-demo-link.vercel.app" target="_blank" 
+         class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+        <i class="fas fa-link"></i> Live Demo
+      </a>
+      <!-- Code -->
+      <a href="https://github.com/your-github-repo" target="_blank" 
+         class="text-gray-400 hover:text-white flex items-center gap-2">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+  </div>
+</div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-all group">
+                    <div class="aspect-video bg-gradient-to-br from-green-500 to-emerald-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" alt="Project">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                        <p class="text-gray-400 mb-4">Modern task tracker with real-time updates</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs">React</span>
+                            <span class="px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full text-xs">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs">MongoDB</span>
+                        </div>
+                        <a href="reume/portfolio.html" class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-2xl overflow-hidden hover:scale-105 transition-all group">
+                    <div class="aspect-video bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500" alt="Project">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Website</h3>
+                        <p class="text-gray-400 mb-4">Responsive portfolio with modern design</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full text-xs">HTML</span>
+                            <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs">CSS</span>
+                            <span class="px-3 py-1 bg-yellow-500/20 border border-yellow-500/30 rounded-full text-xs">JavaScript</span>
+                        </div>
+                        <a href="reume/AnaMarie.pdf" class="text-blue-400 hover:text-blue-300 flex items-center gap-2">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="reume/portfolio.html" class="inline-block px-8 py-4 glass-effect rounded-full font-semibold hover:bg-gray-800/50 transition-all duration-300 hover:scale-105">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl top-0 right-1/4"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something <span class="gradient-text">Amazing</span> Together</h2>
+            <p class="text-xl text-gray-400 mb-8">I'm always open to discussing new projects and opportunities</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                    Start a Project <i class="fas fa-rocket"></i>
+                </a>
+                <a href="AnaMarie.pdf" download class="px-8 py-4 glass-effect rounded-full font-semibold hover:bg-gray-800/50 transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                    Download Resume <i class="fas fa-download"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-gray-800 mt-10">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="year"></span> Portfolio. All rights reserved. | Made with ❤️ by <span class="gradient-text">Ana Marie</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
 </body>
 </html>
